@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>No.2 - 初步接触 CSS 2D 变形</title>
+	<style> 
+		div{
+			float: left;
+			margin-right: 50px;
+			background-color:#FAFAFA;
+			width:60px;
+			height:70px;
+		}
+		p{
+			text-align:center;
+			border:#E8E8E8 1px solid;
+			line-height:68px;
+			margin: 0;
+		}
+		/*盒子0*/
+		#b0{
+						
+		}
+		/*向左倾斜30度*/
+		#b1{
+			/* skew div */
+			transform:skew(30deg,0);
+			-ms-transform:skew(30deg,0); /* Internet Explorer */
+			-moz-transform:skew(30deg,0); /* Firefox */
+			-webkit-transform:skew(30deg,0); /* Safari 和 Chrome */
+			-o-transform:skew(30deg,0); /* Opera */
+		}
+		/*压缩2倍*/
+		#b2{
+			/* scale div */
+			transform:scale(0.5,1);
+			-ms-transform:scale(0.5,1);/* Internet Explorer */
+			-moz-transform:scale(0.5,1); /* Firefox */
+			-webkit-transform:scale(0.5,1); /* Safari 和 Chrome */
+			-o-transform:scale(0.5,1); /* Opera */
+		}
+		/*旋转45度*/
+		#b3{
+			/* Rotate div */
+			transform:rotate(45deg);
+			-ms-transform:rotate(45deg); /* Internet Explorer */
+			-moz-transform:rotate(45deg); /* Firefox */
+			-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+			-o-transform:rotate(45deg); /* Opera */
+		}
+		/*x轴位移10px y轴位移20px*/
+		#b4{
+			/* translate div */
+			transform:translate(10px,20px);
+			-ms-transform:translate(10px,20px); /* Internet Explorer */
+			-moz-transform:translate(10px,20px); /* Firefox */
+			-webkit-transform:translate(10px,20px); /* Safari 和 Chrome */
+			-o-transform:translate(10px,20px); /* Opera */
+		}
+		/*同时包含上述属性*/
+		#b5{
+			/* matrix div */
+			transform:matrix(0.707,0.9,-0.1,0.707,10,20);
+			-ms-transform:matrix(0.707,0.9,-0.1,0.707,10,20); /* Internet Explorer */
+			-moz-transform:matrix(0.707,0.9,-0.1,0.707,10,20); /* Firefox */
+			-webkit-transform:matrix(0.707,0.9,-0.1,0.707,10,20); /* Safari 和 Chrome */
+			-o-transform:matrix(0.707,0.9,-0.1,0.707,10,20); /* Opera */
+
+
+		}
+	</style>
+</head>
+<body>
+	<div id="b0"><p>box0</p></div>
+	<div id="b1"><p>box1</p></div>
+	<div id="b2"><p>box2</p></div>
+	<div id="b3"><p>box3</p></div>
+	<div id="b4"><p>box4</p></div>
+	<div id="b5"><p>box5</p></div>
+</body>
+</html>
