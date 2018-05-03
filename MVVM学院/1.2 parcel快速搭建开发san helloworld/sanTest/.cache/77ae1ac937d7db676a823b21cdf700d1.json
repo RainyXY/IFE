@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"_css_loader"}],"generated":{"css":".title{\r\n    font-size:42px;\r\n    color: #2daf5f;\r\n}","js":"\n        var reloadCSS = require('_css_loader');\n        module.hot.dispose(reloadCSS);\n        module.hot.accept(reloadCSS);\n      "},"hash":"853a94590809b0e251c6acffd1657964","cacheData":{}}
