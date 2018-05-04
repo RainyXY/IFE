@@ -1,0 +1,262 @@
+body{
+	background-color: #d69a44;
+}
+.container{
+	position: relative;
+	width: 100%;
+	height: 600px
+}
+/*脸*/
+.face{
+	width: 350px;
+	height: 250px;
+	border-radius: 50% 50% 30% 30%;	
+	border: 2px solid black;
+	background: #fbf8f1;
+	z-index: 10;
+	position: absolute;
+	left: 40%;
+	top: 30%;
+	overflow: hidden;
+}
+
+/*花纹*/
+.pie{
+	width: 120px;
+	height: 120px;
+	border-radius: 50% 50% 50% 50%;	
+	background: #f3b32e;
+	position: absolute;
+	left: 50%;
+	margin-top: -40px;
+	margin-left: 50px;
+}
+
+/*眼睛*/
+.eye{
+	width: 300px;
+	height: 70px;
+	position: absolute;
+	top: 90px;
+  	left: 50%;
+  	margin-left: -140px;
+  	overflow: hidden;
+}
+/*眼眶*/
+.orbit{
+	height: 100px;
+    width: 100px;
+    border: 2px solid #2e2e2e;
+    border-radius: 50% 50% 50% 50%;
+    position: absolute;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: white;
+}
+/*眼核*/
+.orbit > div:first-child {
+    height: 55px;
+    width: 46px;
+    position: absolute;
+    background-color: black;
+    border-radius: 50% 50% 50% 50%;
+    margin-left: 25px;
+    transition:all 1s;
+}
+/*眼底*/
+.eye_below{
+	height: 50px;
+    width: 100px;
+    border-top: 2px solid #2e2e2e;
+    border-radius: 40% 40% 50% 50%;
+    background: #F6F7F2;
+    margin-top: 50px;
+    position: absolute;
+    transition: margin-top 1s;
+ /*   border: 2px solid red;*/
+}
+/*腮红*/
+.face_red{
+	position: absolute;
+    height: 20px;
+    width: 70px;
+    background: red;
+    top: 52px;
+    left: 16px;
+    border-radius: 50% 50% 50% 50%;
+    background: #e85a5e;
+    opacity: 0;
+}
+/*右眼*/
+.eye_right{
+	left: 184px;
+    top: 0px;
+    background: red;
+    position: absolute;
+}
+
+/*鼻子*/
+.nose{
+	width: 20px;
+	height: 10px;
+  	border-bottom: 8px solid #000;
+  	border-radius: 0% 0% 50% 50%;
+  	top: 154px;
+  	left: 50%;
+  	margin-left: -10px;
+  	position: absolute;
+}
+
+/*嘴巴*/
+.mouth{
+	width: 80px;
+	position: absolute;
+    top: 168px;
+ 	left: 50%;
+  	margin-left: -40px;
+  	height: 20px;
+  	overflow: hidden;
+}
+/*左边*/
+.mouth > div:first-child {
+    width: 40px;
+	height: 40px;
+	border-bottom: 4px solid #000;
+	border-right: 4px solid #000;
+	border-radius: 0% 40% 50% 20%;
+	margin-top: -26px;
+	position: absolute;
+	left: 0;
+}
+/*右边*/
+.mouth > div:last-child{
+	width: 40px;
+	height: 40px;
+	border-bottom: 4px solid #000;
+	border-left: 4px solid #000;
+	border-radius: 40% 0% 20% 50%;
+	margin-top: -26px;
+	position: absolute;
+	right: 0;
+}
+
+/*耳朵*/
+.ear{
+	position: absolute;
+  	left: 42%;
+  	width: 300px;
+  	margin-top: 165px;
+}
+/*左耳*/
+.ear > div:first-child{
+	width: 80px;
+	height: 100px;
+	position: absolute;
+	border-radius: 100% 10% 50% 0;	
+	background: #fbf8f1;
+	border: 2px solid black;
+
+	transform: rotate(-15deg);
+    -ms-transform: rotate(-15deg);
+    -moz-transform: rotate(-15deg);
+    -webkit-transform: rotate(-15deg);
+    -o-transform: rotate(-15deg);
+}
+/*右耳*/
+.ear > div:last-child{
+	width: 80px;
+	height: 100px;
+	position: absolute;
+  	right: 0;
+  	border-radius: 10% 100% 0% 50%;
+  	background: #f1ac2b;
+  	border: 2px solid black;
+
+  	transform: rotate(15deg);
+	-ms-transform: rotate(15deg);
+	-moz-transform: rotate(15deg);
+	-webkit-transform: rotate(15deg);
+	-o-transform: rotate(15deg);
+}
+
+/*动起来！*/
+
+/*鼠标移出时添加动画效果*/
+.eye_below,
+.orbit,
+.face_red,
+.ear > div:first-child,
+.ear > div:last-child,
+.eye,
+.mouth > div:first-child,
+.mouth > div:last-child{
+  transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  -moz-transition: all 1s ease-out;
+  -ms-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+}
+/*鼠标移入时，耳朵的变化效果*/
+.cat:hover .ear > div:first-child {
+    transform: rotate(-30deg);
+  	-webkit-transform: rotate(-30deg);
+  	-moz-transform: rotate(-30deg);
+  	-ms-transform: rotate(-30deg);
+  	-o-transform: rotate(-30deg);
+  	/*动画速度*/
+    transition: transform 1s,left 1s;
+}
+.cat:hover .ear > div:last-child {
+    transform: rotate(30deg);
+  	-webkit-transform: rotate(30deg);
+  	-moz-transform: rotate(30deg);
+  	-ms-transform: rotate(30deg);
+  	-o-transform: rotate(30deg);
+
+  	transition: transform 1s,right 1s;
+}
+
+/*鼠标移入时嘴的变化效果*/
+.cat:hover .mouth > div:first-child {
+    border-radius: 50% 50% 50% 50%;
+    width: 40px;
+    transition:  border-radius  1s;
+}
+.cat:hover .mouth > div:last-child {
+   	width: 40px;
+    margin-left: -30px;
+  	border-radius: 50% 50% 50% 50%;
+    transition:  border-radius  1s;
+}
+
+/*鼠标移入时脸颊变化效果*/
+.cat :hover .face_red {
+	opacity: 0.6;
+  	transform: scaleX(0.8);
+  	-webkit-transform: scaleX(0.8);
+  	-moz-transform: scaleX(0.8);
+  	-ms-transform: scaleX(0.8);
+  	-o-transform: scaleX(0.8);
+}
+
+/*鼠标移入时眼底变化效果*/
+.cat :hover .eye_below {
+  	transform: translateY(-15px);
+  	-webkit-transform: translateY(-15px);
+  	-moz-transform: translateY(-15px);
+  	-ms-transform: translateY(-15px);
+  	-o-transform: translateY(-15px);
+
+  	transition: transform 1s;
+}
+
+/*鼠标移入时眼球变化效果*/
+.cat :hover .orbit {
+  	transform: scaleX(0.8);
+  	-webkit-transform: scaleX(0.8);
+  	-moz-transform: scaleX(0.8);
+  	-ms-transform: scaleX(0.8);
+  	-o-transform: scaleX(0.8);
+
+  	transition: transform 1s;
+}
