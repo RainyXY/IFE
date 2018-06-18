@@ -1,0 +1,149 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.slider-wrap{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.item{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index:-2;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.background{
+  width: 150px;
+  height: 90px;
+  margin-right: 20px;
+  margin-bottom: 50px;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #333333;
+  cursor: pointer;
+  position: relative;
+  z-index:1000;
+}
+.background::after{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  background-color: rgba(3, 3, 3, 0.5);
+}
+.background:last-child{
+    margin-right: 0;
+}
+.background:hover::after,.background:focus::after{
+    background-color: transparent; 
+}
+/*背景*/
+.left-enter{
+  background-image: url('./img/2.jpg');
+}
+.bottom-enter{
+  background-image: url('./img/5.jpg');
+}
+.toBig-enter{
+  background-image: url('./img/3.jpg');
+}
+.toSmall-enter{
+  background-image: url('./img/4.jpg');
+}
+.mixture-enter{
+  background-image: url('./img/1.jpg');
+}
+
+/* 动画部分 */
+/* 左侧进入 */
+@keyframes leftMove{
+  from{
+    left: -500px;
+  }
+  to{
+    left: 0;
+  }
+}
+.slide1:hover~.left-enter {
+  animation: leftMove 0.5s ease-out;
+  z-index:-1;
+}
+
+/* 底部进入 */
+@keyframes downMove{
+  from{
+    top: 350px;
+  }
+  to{
+    top: 0;
+  }
+}
+.slide2:hover~.bottom-enter {
+  animation: downMove 0.5s ease-out;
+  z-index:-1;
+}
+
+/* 放大进入 */
+@keyframes toBig{
+  from{
+    transform: scale(0.1);
+  }
+  to{
+    transform: scale(1);
+  }
+}
+.slide3:hover~.toBig-enter {
+  animation: toBig 1s ease-in;
+  z-index:-1;
+}
+
+/* 缩小进入 */
+@keyframes toSmall{
+  from{
+    transform: scale(2);
+  }
+  to{
+    transform: scale(1);
+  }
+}
+.slide4:hover~.toSmall-enter {
+  animation: toSmall 1s ease-out;
+  z-index:-1;
+}
+
+/* 旋转 + 缩小混合效果 */
+@keyframes mixture{
+  from{
+    transform: rotate(-360deg) scale(0.1);
+  }
+  to{
+    transform: rotate(0) scale(1);
+  }
+}
+.slide5:hover~.mixture-enter {
+  animation: mixture 0.7s ease-in-out;
+  z-index:-1;
+}
+
+
+
+
+
+
+
+
+
