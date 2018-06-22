@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>第十七天到第十八天，“如果”可以“重来”</title>
+   <style>
+    table td {
+        border: 1px solid #ccc;
+    }
+    </style>
+</head>
+<body>
+	<h1>一、计算：</h1>
+    <input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果:</p>
+
+    <h1>二、十进制转二进制：</h1>
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result2">运算结果:</p>
+
+    <h1>三、3的小游戏</h1>
+    <p>动动你的小手指，按F12并刷新查看</p>
+
+    <h1>四、九九乘法表：</h1>
+    <input type="number" min="1" id="inputNum">
+    <button id="newTable">生成</button>
+    <table id="tb"></table>
+
+    <!-- <h1>五、问候语：</h1> -->
+    <script>
+		//1.当判断到输入有异常的时候，把错误信息提示到Console中
+	
+			var fNum=document.getElementById("first-number");
+			var sNum=document.getElementById("second-number");
+			var addBtn=document.getElementById("add-btn");
+			var minusBtn=document.getElementById("minus-btn");
+			var timesBtn=document.getElementById("times-btn");
+			var divideBtn=document.getElementById("divide-btn");
+			var result=document.getElementById("result");
+			addBtn.addEventListener("click",add);
+			minusBtn.addEventListener("click",minus);
+			timesBtn.addEventListener("click",times);
+			divideBtn.addEventListener("click",divide);
+			function add(){
+			    r=parseInt(fNum.value)+parseInt(sNum.value);
+			    result.innerHTML="运算结果:"+r;
+			};
+			function minus(){
+			    r=parseInt(fNum.value)-parseInt(sNum.value);
+			    result.innerHTML="运算结果:"+r;
+			};
+			function times(){
+			    r=parseInt(fNum.value) * parseInt(sNum.value);
+			    result.innerHTML="运算结果:"+r;
+			};
+			function divide(){
+			    if(parseInt(sNum.value)==0){
+			        console.log("除数不能为0");
+			        return
+			    }
+			    r=parseInt(fNum.value) / parseInt(sNum.value);
+			    result.innerHTML="运算结果:"+r;
+			};
+
+
+
+    	//2.将一个十进制非负整数，转换为二进制
+
+		// 实现当点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+		// Some coding
+
+		//2.2.转化显示后的二进制数为bin-bit中输入的数字宽度
+		
+		    // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+		    // 这里是上一个任务的实现
+	
+		// 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+		// 新的需求是，转化显示后的二进制数为bin-bit中输入的数字宽度，例如
+		// dec-number为5，bin-bit为5，则转化后数字为00101
+		// 如果bin-bit小于转化后的二进制本身位数，则使用原本的位数，如dec-number为5，bin-bit为2，依然输出101，但同时在console中报个错
+		// Some coding
+    
+    		var btn2 = document.getElementById('trans-btn');
+	        var para2 = document.getElementById('result2');
+	        btn.onclick = function () {
+	            var inputNum = document.getElementById('dec-number').value;
+	            para2.innerHTML = "运算结果为"：+ `${dec2bin(inputNum)}`;
+	        };
+	    	function dec2bin(decNumber) {
+	    		// 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+	    		var bit = document.getElementById('bin-bit').value;
+	    		var remainder,arr=[];
+	    		while(Math.trunc(decNumber>0)){
+	    			remainder = decNumber%2;
+	    			arr.unshift(remainder);
+	    			decNumber = Math.trunc(decNumber/2);
+	    		}
+	    		var len=bit-arr.length;
+	    		if (len<0) {
+	    			console.log("位数过小");
+	    			return arr.join('');
+	    		} else {
+	    			while(len>0){
+	    				arr.unshift('0');
+	    				len--;
+	    			}
+	    			return arr.join('');
+	    		}
+			}
+    
+    	
+
+
+		//3.3的小游戏
+	
+			for(int i=1;i<=100;i++){
+				if (i%3==0) {
+					console.log('PA');
+				} else {
+					console.log(i);
+				}
+			}
+		
+		//4.使用循环实现一个九九乘法表
+		{
+		et btn = document.getElementById('newTable');
+            btn.onclick = function () {
+                let tb = document.querySelector('table');
+                if (tb) {
+                    document.body.removeChild(tb)
+                };
+                // 创建新表格并追加
+                let newTb = document.createElement('table');
+                document.body.appendChild(newTb);
+                let val = document.getElementById('inputNum').value;
+                if (val >= 0 && val <= 20) {
+                    myFunction(val);
+                }
+                function myFunction(row) {
+                    for (let i = 1; i <= row; i++) {
+                        // 创建新行并追加
+                        let newTr = document.createElement('tr');
+                        newTb.appendChild(newTr);
+                        for (let j = 1; j <= i; j++) {
+                            let res = i * j;
+                            let idx = i * (i - 1) / 2 + j;
+                            // 创建新单元格并追加
+                            newTr.appendChild(document.createElement('td'));
+                            // 向单元格输入内容
+                            let tdList = document.querySelectorAll('td');
+                            tdList[idx - 1].innerHTML = `${j}*${i}=${res}`;
+                        }
+                    }
+                }
+            }}
+		//5.根据当前时间，在页面中输出不同的问候语
+    </script>
+</body>
+</html>
