@@ -130,79 +130,44 @@
 	    }
 	}
     
-    //4
-   //  {
-   //  	let button = document.getElementById('fade-btn');
-   //  	let opacity = Number(div.style.opacity);
-   //  	if (opacity > 0) {
-   //          button.onclick = fadeOut;
-   //      };
-   //  	function fadeOut(){
-			// button.disabled = true;
-   //  		let opaOut = setInterval(function(){
-   //  			opacity = opacity - 0.05;
-   //  			if (opacity <= 0) {
-   //  				clearInterval(opaOut);
-   //  				button.disabled = false;
-   //  				button.textContent = '淡入';
-   //  				button.onclick = fadeIn;
-   //  			} else {
-   //  				div.style.opacity = `${opacity}`;
-   //  			}
-   //  			return opacity;
-   //  		},50)
-   //  	}
-   //  	function fadeIn(){
-   //  		button.disabled = true;
-   //  		let opaIn = setInterval(function(){
-   //  			opacity = opacity + 0.05;
-   //  			if (opacity >=1) {
-   //  				clearInterval(opaIn);
-   //  				button.disabled = false;
-   //  				button.textContent = '淡出';
-   //  			} else {
-   //  				div.style.opacity = `${opacity}`;
-   //  			}
-   //  		},50)
-   //  	}
-   //  }
+ //4
     {
-        let div = document.getElementById('fade-obj');
-        let button = document.getElementById('fade-btn');
-        // let i = 1;
-        // let j = 0;
-        let opa = Number(div.style.opacity);
-        if (opa > 0) {
-            button.onclick = fadeOut;
-        };
-        function fadeOut() {
-            button.disabled = true;
-            let decOpa = setInterval(function () {
-                opa = opa - 0.05;
-                if (opa <= 0) {
-                    clearInterval(decOpa);
-                    button.disabled = false;
-                    button.textContent = '淡入';
-                    button.onclick = fadeIn;
-                } else {
-                    div.style.opacity = `${opa}`;
-                };
-                return opa;
-            }, 50)
-        }
-        function fadeIn() {
-            button.disabled = true;
-            let incrOpa = setInterval(function () {
-                opa = opa + 0.05;
-                if (opa >= 1) {
-                    clearInterval(incrOpa);
-                    button.disabled = false;
-                    button.textContent = '淡出';
-                } else {
-                    div.style.opacity = `${opa}`;
-                }                    
-            }, 50)
-        }
+    	let button = document.querySelector("#fade-btn");
+	    let div = document.getElementById("fade-obj");
+	    let opacity = 1;
+	    let id;
+	    button.onclick = function () {
+	        button.setAttribute("disabled", "disabled");
+	        if (opacity === 1) {
+	            id = setInterval(fadeOut, 50);
+	        }
+	        else {
+	            id = setInterval(fadeIn, 50);
+	        }
+	    };
+	    function fadeOut() {
+	        if (opacity > 0) {
+	            opacity = opacity - 0.1;
+	            div.style.opacity = opacity.toFixed(1).toString();
+	        }
+	        else {
+	            button.removeAttribute("disabled");
+	            button.innerHTML = "淡入";
+	            clearInterval(id);
+	        }
+	    }
+	    
+	    function fadeIn() {
+	        if (opacity < 1) {
+	            opacity = opacity + 0.1;
+	            div.style.opacity = opacity.toFixed(1).toString();
+	        }
+	        else {
+	            button.removeAttribute("disabled");
+	            button.innerHTML = "淡出";
+	            clearInterval(id);
+	        }
+	    }
     }
 
 	//5
